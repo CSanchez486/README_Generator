@@ -1,9 +1,6 @@
 const inquirer = require("inquirer");
 
 
-
-// TODO: Include packages needed for this application
-
 // TODO: Create an array of questions for user input
 const questions = [{
     name: "Title",
@@ -11,7 +8,7 @@ const questions = [{
     type: "input",
 },
  {
-     name: "Description ", 
+     name: "Description", 
      questions: "Describe your project:",
      type: "input",
  },
