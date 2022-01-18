@@ -16,7 +16,6 @@ const questions = [{
      name: "Table of Contents",
      questions: "Enter Table of Contents:",
      type: "input",
-        
  },
  {
     name: "Installation",
@@ -29,9 +28,9 @@ const questions = [{
      type: "input",
  },
  {
-     name: "License",
+    name: "License",
      questions: "Enter any license associated with project",
-     type: "list",
+    type: "list",
  },
  {
      name: "Contributors",
