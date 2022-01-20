@@ -41,7 +41,9 @@ ${data.description}
 * [Installation](#installation)
 
 * [Usage](#usage)
+
 ${renderLicenseLink(data.license)}
+
 * [Contributing](#contributing)
 
 * [Tests](#tests)

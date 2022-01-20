@@ -1,72 +1,91 @@
+// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const fs = require("fs");
+const path = require("path");
+const generateMarkdown = require("./utils/generateMarkdown.js")
 
 
 // TODO: Create an array of questions for user input
 const questions = [{
+    message: "What is the title of the project?",
     name: "Title",
-    questions: "What is the title of the project?",
     type: "input",
 },
  {
-     name: "Description", 
-     questions: "Describe your project:",
-     type: "input",
+    message: "Describe your project:", 
+    name: "Description", 
+    type: "input",
  },
  {
      name: "Table of Contents",
-     questions: "Enter Table of Contents:",
+     message: "Enter Table of Contents:",
      type: "input",
  },
  {
     name: "Installation",
-    questions: "Enter installation instructions:",
+    message: "Enter installation instructions:",
     type: "input",
  },
  {
      name: "Usage",    
-     questions: "Examples of project usage:",
+     message: "Examples of project usage:",
      type: "input",
  },
  {
+    message: "License associated with project:",
     name: "License",
-     questions: "Enter any license associated with project",
     type: "list",
+     //Look up lists of licenses from GitHub
+    choices: ['None', 'MIT', 'ISC', 'GPLv3', 'Apache_2.0'],
  },
  {
      name: "Contributors",
-     questions: "Who contributed to the project?",
+     message: "Who contributed to the project?",
      types: "input",
  },
  {
      name: "Tests", // Tests, and Questions
-     questions: "Enter test instructions",
+     message: "Enter test instructions",
      type: "input",
  },
  {
      name: "Questions",
-     questions: "Enter GitHub Username:",
+     message: "Enter GitHub Username:",
      type: "input",
  },
  {
-     questions: "Enter Email Address:",
+     name: "E-mail",
+     message: "Enter Email Address:",
      type: "input",
  },
 ];
 
-// inquirer.prompt(questions);
-console.log(questions);
+
+    
 
 // TODO: Create a function to write README file
 // FS write to file method
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+    };
+
+
+inquirer
+   .prompt(questions)
+   //changed inquirerResponse to answers
+   .then((answers) => 
+    // {   console.log(generateMarkdown);
+       writeToFile("newReadMe.md",generateMarkdown({
+           ...answers
+       })));
+    
 
 // TODO: Create a function to initialize app
 //review init 
-function init() {}
+
 
 // Function call to initialize app
 // invokes init function
-init();
 
 
 
@@ -76,14 +95,6 @@ init();
 
 
 
-//WHEN I enter my project title
-// THEN this is displayed as the title of the README
-
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions x
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests x
-
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
 
 
 // Create links that redirect the table of contents to the correct section.
