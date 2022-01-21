@@ -63,11 +63,27 @@ const questions = [{
 
     
 
-// TODO: Create a function to write README file
+// Create a function to write README file
 // FS write to file method
+// function writeToFile(fileName, data) {
+//     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+//     };
 function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-    };
+    return fs.writeFile(path.join(process.cwd(), fileName), data, function (err) {
+        if (err) throw err;
+        console.log("newReadMe.md has been created!");
+    });
+};
+
+
+// (err) =>
+//       err
+//         ? console.error(err)
+//         : console.log(
+//             `Review for ${newReview.product} has been written to JSON file`
+//           )
+
+
 
 
 inquirer
