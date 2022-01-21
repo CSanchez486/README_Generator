@@ -63,37 +63,36 @@ const questions = [{
 
     
 
-// Create a function to write README file
+// Function to write README file:
 // FS write to file method
-// function writeToFile(fileName, data) {
-//     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-//     };
 function writeToFile(fileName, data) {
     return fs.writeFile(path.join(process.cwd(), fileName), data, function (err) {
         if (err) throw err;
-        console.log("newReadMe.md has been created!");
+        // console.log("newReadMe.md has been generated!");
     });
 };
 
-
-// (err) =>
-//       err
-//         ? console.error(err)
-//         : console.log(
-//             `Review for ${newReview.product} has been written to JSON file`
-//           )
-
-
-
-
+//invoking inquirer
+// re-written inquirer code - 1 of 2
 inquirer
-   .prompt(questions)
-   //changed inquirerResponse to answers
-   .then((answers) => 
-    // {   console.log(generateMarkdown);
-       writeToFile("newReadMe.md",generateMarkdown({
-           ...answers
-       })));
+    .prompt(questions)
+    .then((answers) => {
+        console.log(generateMarkdown);
+        writeToFile("newReadMe.md",generateMarkdown)({
+            ...answers
+        })
+    }) 
+
+
+// original inquirer code - 2 of 2
+// inquirer
+//    .prompt(questions)
+//    //changed inquirerResponse to answers
+//    .then((answers) => 
+//     // {   console.log(generateMarkdown);
+//        writeToFile("newReadMe.md",generateMarkdown({
+//            ...answers
+//        })));
     
 
 // TODO: Create a function to initialize app
